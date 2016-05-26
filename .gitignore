@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 *.gem
 *.rbc
 .bundle
@@ -20,3 +21,20 @@ tmp
 *.o
 *.a
 mkmf.log
+=======
+nbproject/
+debug.log
+.DS_Store
+pkg/
+doc/
+*.gem
+.bundle
+Gemfile.lock
+test/profile/output/*
+.rvmrc
+.rbenv-version
+.idea
+coverage/*
+.flooignore
+.floo
+>>>>>>> 39c26d444de3cb7923c36674683f086480c11ec0

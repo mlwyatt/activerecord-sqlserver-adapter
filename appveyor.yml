@@ -1,0 +1,39 @@
+init:
+  - SET PATH=C:\Ruby%ruby_version%\bin;%PATH%
+  - SET PATH=C:\MinGW\msys\1.0\bin;%PATH%
+  - SET RAKEOPT=-rdevkit
+  - SET TESTOPTS='-v'
+  - SET TINYTDS_VERSION=1.0.4
+clone_depth: 5
+skip_tags: true
+matrix:
+  fast_finish: true
+install:
+  - ps: Update-AppveyorBuild -Version "$(Get-Content $env:appveyor_build_folder\VERSION).$env:appveyor_build_number"
+  - ruby --version
+  - gem --version
+  - bundle install --without odbc guard
+build: off
+test_script:
+  - powershell -File "%APPVEYOR_BUILD_FOLDER%\test\appveyor\dbsetup.ps1"
+  - timeout /t 4 /nobreak > NUL
+  - ps: Start-Service 'MSSQL$SQL2014'
+  - timeout /t 4 /nobreak > NUL
+  - sqlcmd -S ".\SQL2014" -U sa -P Password12! -i %APPVEYOR_BUILD_FOLDER%\test\appveyor\dbsetup.sql
+  - bundle exec rake test ACTIVERECORD_UNITTEST_DATASERVER="localhost\SQL2014"
+  - ps: Stop-Service 'MSSQL$SQL2014'
+  - ps: Start-Service 'MSSQL$SQL2012SP1'
+  - timeout /t 4 /nobreak > NUL
+  - sqlcmd -S ".\SQL2012SP1" -U sa -P Password12! -i %APPVEYOR_BUILD_FOLDER%\test\appveyor\dbsetup.sql
+  - bundle exec rake test ACTIVERECORD_UNITTEST_DATASERVER="localhost\SQL2012SP1"
+  - timeout /t 4 /nobreak > NUL
+  - bundle exec rake test ACTIVERECORD_UNITTEST_HOST=%CI_AZURE_HOST% ACTIVERECORD_UNITTEST_PASS=%CI_AZURE_PASS% ACTIVERECORD_UNITTEST_AZURE=1
+environment:
+  CI_AZURE_HOST:
+    secure: VChrioaIWkf9iuuaSs4cryiA4honrADgZqNC0++begg=
+  CI_AZURE_PASS:
+    secure: cSQp8sk4urJYvq0utpsK+r7J+snJ2wpcdp8RdXJfB+w=
+  matrix:
+    - ruby_version: "200"
+    - ruby_version: "22"
+    - ruby_version: "22-x64"

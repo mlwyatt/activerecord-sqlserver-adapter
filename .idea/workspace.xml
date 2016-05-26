@@ -1,9 +1,142 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6faffba0-5793-4951-bff0-46d84d9a5ed5" name="Default" comment="" />
+    <list default="true" id="6faffba0-5793-4951-bff0-46d84d9a5ed5" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/fixtures/1px.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CHANGELOG.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CODE_OF_CONDUCT.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Guardfile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/MIT-LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/RUNNING_UNIT_TESTS.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/VERSION" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/appveyor.yml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/connection_adapters/sqlserver/core_ext/active_record.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/connection_adapters/sqlserver/core_ext/attribute_methods.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/connection_adapters/sqlserver/core_ext/explain.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/connection_adapters/sqlserver/core_ext/explain_subscriber.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/connection_adapters/sqlserver/core_ext/odbc.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/connection_adapters/sqlserver/database_limits.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/connection_adapters/sqlserver/database_statements.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/connection_adapters/sqlserver/database_tasks.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/connection_adapters/sqlserver/errors.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/connection_adapters/sqlserver/quoting.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/connection_adapters/sqlserver/schema_cache.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/connection_adapters/sqlserver/schema_creation.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/connection_adapters/sqlserver/schema_statements.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/connection_adapters/sqlserver/showplan.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/connection_adapters/sqlserver/showplan/printer_table.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/connection_adapters/sqlserver/showplan/printer_xml.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/connection_adapters/sqlserver/table_definition.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/connection_adapters/sqlserver/transaction.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/connection_adapters/sqlserver/type.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/connection_adapters/sqlserver/type/big_integer.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/connection_adapters/sqlserver/type/binary.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/connection_adapters/sqlserver/type/boolean.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/connection_adapters/sqlserver/type/char.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/connection_adapters/sqlserver/type/date.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/connection_adapters/sqlserver/type/datetime.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/connection_adapters/sqlserver/type/datetime2.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/connection_adapters/sqlserver/type/datetimeoffset.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/connection_adapters/sqlserver/type/decimal.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/connection_adapters/sqlserver/type/float.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/connection_adapters/sqlserver/type/integer.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/connection_adapters/sqlserver/type/money.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/connection_adapters/sqlserver/type/real.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/connection_adapters/sqlserver/type/small_integer.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/connection_adapters/sqlserver/type/small_money.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/connection_adapters/sqlserver/type/smalldatetime.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/connection_adapters/sqlserver/type/string.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/connection_adapters/sqlserver/type/text.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/connection_adapters/sqlserver/type/time.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/connection_adapters/sqlserver/type/time_value_fractional.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/connection_adapters/sqlserver/type/timestamp.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/connection_adapters/sqlserver/type/tiny_integer.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/connection_adapters/sqlserver/type/unicode_char.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/connection_adapters/sqlserver/type/unicode_string.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/connection_adapters/sqlserver/type/unicode_text.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/connection_adapters/sqlserver/type/unicode_varchar.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/connection_adapters/sqlserver/type/unicode_varchar_max.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/connection_adapters/sqlserver/type/uuid.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/connection_adapters/sqlserver/type/varbinary.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/connection_adapters/sqlserver/type/varbinary_max.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/connection_adapters/sqlserver/type/varchar.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/connection_adapters/sqlserver/type/varchar_max.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/connection_adapters/sqlserver/utils.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/connection_adapters/sqlserver/version.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/connection_adapters/sqlserver_adapter.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/connection_adapters/sqlserver_column.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/sqlserver_base.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/active_record/tasks/sqlserver_database_tasks.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/activerecord-sqlserver-adapter.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/arel/visitors/sqlserver.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/arel_sqlserver.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/appveyor/dbsetup.ps1" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/appveyor/dbsetup.sql" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/cases/adapter_test_sqlserver.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/cases/coerced_tests.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/cases/column_test_sqlserver.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/cases/connection_test_sqlserver.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/cases/execute_procedure_test_sqlserver.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/cases/fetch_test_sqlserver.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/cases/fully_qualified_identifier_test_sqlserver.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/cases/helper_sqlserver.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/cases/migration_test_sqlserver.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/cases/order_test_sqlserver.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/cases/pessimistic_locking_test_sqlserver.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/cases/rake_test_sqlserver.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/cases/schema_dumper_test_sqlserver.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/cases/schema_test_sqlserver.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/cases/scratchpad_test_sqlserver.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/cases/showplan_test_sqlserver.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/cases/specific_schema_test_sqlserver.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/cases/transaction_test_sqlserver.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/cases/utils_test_sqlserver.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/cases/uuid_test_sqlserver.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/config.yml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/debug.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/migrations/transaction_table/1_table_will_never_be_created.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/models/sqlserver/booking.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/models/sqlserver/customers_view.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/models/sqlserver/datatype.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/models/sqlserver/datatype_migration.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/models/sqlserver/dollar_table_name.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/models/sqlserver/dot_table_name.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/models/sqlserver/edge_schema.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/models/sqlserver/fk_has_fk.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/models/sqlserver/fk_has_pk.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/models/sqlserver/natural_pk_data.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/models/sqlserver/natural_pk_int_data.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/models/sqlserver/no_pk_data.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/models/sqlserver/object_default.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/models/sqlserver/quoted_table.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/models/sqlserver/quoted_view_1.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/models/sqlserver/quoted_view_2.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/models/sqlserver/string_default.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/models/sqlserver/string_defaults_big_view.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/models/sqlserver/string_defaults_view.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/models/sqlserver/tinyint_pk.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/models/sqlserver/upper.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/models/sqlserver/uppered.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/models/sqlserver/uuid.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/schema/datatypes/2012.sql" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/schema/sqlserver_specific_schema.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/support/coerceable_test_sqlserver.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/support/connection_reflection.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/support/load_schema_sqlserver.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/support/minitest_sqlserver.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/support/paths_sqlserver.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/support/rake_helpers.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/support/sql_counter_sqlserver.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile" afterPath="$PROJECT_DIR$/Gemfile" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Rakefile" afterPath="$PROJECT_DIR$/Rakefile" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/activerecord-sqlserver-adapter.gemspec" afterPath="$PROJECT_DIR$/activerecord-sqlserver-adapter.gemspec" />
+    </list>
     <ignored path="activerecord-sqlserver-adapter.iws" />
     <ignored path=".idea/workspace.xml" />
+    <ignored path=".idea/dataSources.local.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,8 +156,8 @@
       <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="48" selection-start-line="16" selection-start-column="48" selection-end-line="16" selection-end-column="48" />
+            <state relative-caret-position="0">
+              <caret line="177" column="48" selection-start-line="177" selection-start-column="48" selection-end-line="177" selection-end-column="48" />
               <folding />
             </state>
           </provider>
@@ -34,6 +167,9 @@
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -53,7 +189,7 @@
     <option name="width" value="1920" />
     <option name="height" value="1053" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
     <OptionsSetting value="true" id="Checkout" />
@@ -110,6 +246,20 @@
               <option name="myItemId" value="lib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="activerecord-sqlserver-adapter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="activerecord-sqlserver-adapter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="activerecord" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
@@ -125,7 +275,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
@@ -139,25 +289,25 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1464293072290</updated>
-      <workItem from="1464293074704" duration="106000" />
+      <workItem from="1464293074704" duration="220000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="106000" />
+    <option name="totallyTimeSpent" value="220000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1053" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25239617" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32861477" sideWeight="0.35782748" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928064" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32928064" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32861477" sideWeight="0.6421725" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -177,10 +327,18 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/test/migrations/transaction_table/1_table_will_never_be_created.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="48" selection-start-line="16" selection-start-column="48" selection-end-line="16" selection-end-column="48" />
+        <state relative-caret-position="0">
+          <caret line="177" column="48" selection-start-line="177" selection-start-column="48" selection-end-line="177" selection-end-column="48" />
           <folding />
         </state>
       </provider>
