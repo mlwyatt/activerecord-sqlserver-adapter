@@ -13,4 +13,3 @@ test/profile/output/*
 coverage/*
 .flooignore
 .floo
-.idea/*

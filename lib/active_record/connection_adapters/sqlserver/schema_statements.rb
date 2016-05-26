@@ -282,7 +282,7 @@ module ActiveRecord
               ON o.object_id = c.object_id
               AND c.name = columns.COLUMN_NAME
             WHERE columns.TABLE_NAME = @0
-              AND columns.TABLE_SCHEMA = #{identifier.schema.blank? ? 'dbo' : '@1'}
+              AND columns.TABLE_SCHEMA = #{identifier.schema.blank? ? 'schema_name' : '@1'}
             ORDER BY columns.ordinal_position
           }.gsub(/[ \t\r\n]+/, ' ')
           binds = [[info_schema_table_name_column, identifier.object]]
