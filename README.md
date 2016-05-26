@@ -1,7 +1,4 @@
-# ActiveRecord SQL Server Adapter. For SQL Server 2012 And Higher.
-
-
-# And 2000
+# ActiveRecord SQL Server Adapter. For SQL Server 2000 only.
 
 
 
