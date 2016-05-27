@@ -9,3 +9,4 @@ doc/
 Gemfile.lock
 test/profile/output/*
 .rbenv-version
+.idea
