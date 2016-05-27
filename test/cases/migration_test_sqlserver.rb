@@ -1,61 +1,108 @@
-require 'cases/helper_sqlserver'
+require 'cases/sqlserver_helper'
 require 'models/person'
 
-class MigrationTestSQLServer < ActiveRecord::TestCase
-
-  describe 'For transactions' do
-
-    before do
+class MigrationTestSqlserver < ActiveRecord::TestCase
+  
+  def setup
+    @connection = ActiveRecord::Base.connection
+  end
+  
+  context 'For transactions' do
+    
+    setup do
       @trans_test_table1 = 'sqlserver_trans_table1'
       @trans_test_table2 = 'sqlserver_trans_table2'
       @trans_tables = [@trans_test_table1,@trans_test_table2]
     end
-
-    after do
+    
+    teardown do
       @trans_tables.each do |table_name|
-        ActiveRecord::Migration.drop_table(table_name) if connection.tables.include?(table_name)
+        ActiveRecord::Migration.drop_table(table_name) if @connection.tables.include?(table_name)
       end
     end
-
-    it 'not create a tables if error in migrations' do
+    
+    should 'not create a tables if error in migrations' do
       begin
-        migrations_dir = File.join ARTest::SQLServer.migrations_root, 'transaction_table'
-        quietly { ActiveRecord::Migrator.up(migrations_dir) }
+        ActiveRecord::Migrator.up(SQLSERVER_MIGRATIONS_ROOT+'/transaction_table')
       rescue Exception => e
         assert_match %r|this and all later migrations canceled|, e.message
       end
-      connection.tables.wont_include @trans_test_table1
-      connection.tables.wont_include @trans_test_table2
+      assert_does_not_contain @trans_test_table1, @connection.tables
+      assert_does_not_contain @trans_test_table2, @connection.tables
     end
-
+    
   end
-
-  describe 'For changing column' do
-
-    it 'not raise exception when column contains default constraint' do
+  
+  context 'For changing column' do
+    
+    should 'not raise exception when column contains default constraint' do
       lock_version_column = Person.columns_hash['lock_version']
       assert_equal :integer, lock_version_column.type
       assert lock_version_column.default.present?
-      assert_nothing_raised { connection.change_column 'people', 'lock_version', :string }
+      assert_nothing_raised { @connection.change_column 'people', 'lock_version', :string }
       Person.reset_column_information
       lock_version_column = Person.columns_hash['lock_version']
       assert_equal :string, lock_version_column.type
       assert lock_version_column.default.nil?
     end
-
-    it 'not drop the default contraint if just renaming' do
-      find_default = lambda do
-        connection.execute_procedure(:sp_helpconstraint, 'sst_string_defaults', 'nomsg').select do |row|
-          row['constraint_type'] == "DEFAULT on column string_with_pretend_paren_three"
+    
+    should 'not drop the default contraint if just renaming' do
+      find_default = lambda do 
+        @connection.select_all("EXEC sp_helpconstraint 'defaults','nomsg'").select do |row|     
+          row['constraint_type'] == "DEFAULT on column decimal_number"
         end.last
       end
       default_before = find_default.call
-      connection.change_column :sst_string_defaults, :string_with_pretend_paren_three, :string, limit: 255
+      @connection.change_column :defaults, :decimal_number, :decimal, :precision => 4
       default_after = find_default.call
       assert default_after
       assert_equal default_before['constraint_keys'], default_after['constraint_keys']
     end
-
+    
   end
-
+  
 end
+
+
+class MigrationTest < ActiveRecord::TestCase
+  
+  COERCED_TESTS = [:test_add_column_not_null_without_default]
+  
+  include SqlserverCoercedTest
+  
+  def test_coerced_test_add_column_not_null_without_default
+    Person.connection.create_table :testings do |t| 
+      t.column :foo, :string
+      t.column :bar, :string, :null => false
+    end
+    assert_raises(ActiveRecord::StatementInvalid) do
+      Person.connection.execute "INSERT INTO [testings] ([foo], [bar]) VALUES ('hello', NULL)"
+    end
+  ensure
+    Person.connection.drop_table :testings rescue nil
+  end
+  
+end
+
+
+class ChangeTableMigrationsTest < ActiveRecord::TestCase
+  
+  COERCED_TESTS = [:test_string_creates_string_column]
+  
+  include SqlserverCoercedTest
+  
+  def test_coerced_string_creates_string_column
+    with_change_table do |t|
+      @connection.expects(:add_column).with(:delete_me, :foo, coerced_string_column, {})
+      @connection.expects(:add_column).with(:delete_me, :bar, coerced_string_column, {})
+      t.string :foo, :bar
+    end
+  end
+  
+  def coerced_string_column
+    "#{Person.connection.native_string_database_type}(255)"
+  end
+  
+end
+
+

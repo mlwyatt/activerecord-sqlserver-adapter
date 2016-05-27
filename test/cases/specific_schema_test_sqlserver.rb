@@ -1,50 +1,34 @@
-require 'cases/helper_sqlserver'
+require 'cases/sqlserver_helper'
 
-class SpecificSchemaTestSQLServer < ActiveRecord::TestCase
-
-  after { SSTestEdgeSchema.delete_all }
-
-  it 'handle dollar symbols' do
-    SSTestDollarTableName.create!
-    SSTestDollarTableName.limit(20).offset(1)
+class StringDefault < ActiveRecord::Base; end;
+class SqlServerEdgeSchema < ActiveRecord::Base
+  attr_accessor :new_id_setting
+  before_create :set_new_id
+  protected
+  def set_new_id
+    self[:guid_newid] ||= connection.newid_function if new_id_setting
+    true
   end
+end
 
-  it 'handle dot table names' do
-    SSTestDotTableName.create! name: 'test'
-    SSTestDotTableName.limit(20).offset(1)
-    SSTestDotTableName.where(name: 'test').first.must_be :present?
+class SpecificSchemaTestSqlserver < ActiveRecord::TestCase
+  
+  should 'quote table names properly even when they are views' do
+    obj = SqlServerQuotedTable.create!
+    assert_nothing_raised { SqlServerQuotedTable.first }
+    obj = SqlServerQuotedView1.create!
+    assert_nothing_raised { SqlServerQuotedView1.first }
+    obj = SqlServerQuotedView2.create!
+    assert_nothing_raised { SqlServerQuotedView2.first }
   end
-
-  it 'models can use tinyint pk tables' do
-    obj = SSTestTinyintPk.create! name: '1'
-    obj.id.is_a? Fixnum
-    SSTestTinyintPk.find(obj.id).must_equal obj
-  end
-
-  it 'be able to complex count tables with no primary key' do
-    SSTestNoPkData.delete_all
-    10.times { |n| SSTestNoPkData.create! name: "Test#{n}" }
-    assert_equal 1, SSTestNoPkData.where(name: 'Test5').count
-  end
-
-  it 'quote table names properly even when they are views' do
-    obj = SSTestQuotedTable.create!
-    assert_nothing_raised { assert SSTestQuotedTable.first }
-    obj = SSTestQuotedTableUser.create!
-    assert_nothing_raised { assert SSTestQuotedTableUser.first }
-    obj = SSTestQuotedView1.create!
-    assert_nothing_raised { assert SSTestQuotedView1.first }
-    obj = SSTestQuotedView2.create!
-    assert_nothing_raised { assert SSTestQuotedView2.first }
-  end
-
-  it 'cope with multi line defaults' do
-    default = SSTestStringDefault.new
+  
+  should 'cope with multi line defaults' do
+    default = StringDefault.new
     assert_equal "Some long default with a\nnew line.", default.string_with_multiline_default
   end
-
-  it 'default strings before save' do
-    default = SSTestStringDefault.new
+  
+  should 'default strings before save' do
+    default = StringDefault.new
     assert_equal nil, default.string_with_null_default
     assert_equal 'null', default.string_with_pretend_null_one
     assert_equal '(null)', default.string_with_pretend_null_two
@@ -53,105 +37,118 @@ class SpecificSchemaTestSQLServer < ActiveRecord::TestCase
     assert_equal '(3)', default.string_with_pretend_paren_three
   end
 
-  it 'default strings after save' do
-    default = SSTestStringDefault.create
+  should 'default strings after save' do
+    default = StringDefault.create
     assert_equal nil, default.string_with_null_default
     assert_equal 'null', default.string_with_pretend_null_one
     assert_equal '(null)', default.string_with_pretend_null_two
     assert_equal 'NULL', default.string_with_pretend_null_three
     assert_equal '(NULL)', default.string_with_pretend_null_four
   end
-
-  it 'default objects work' do
-    obj = SSTestObjectDefault.create! name: 'MetaSkills'
-    obj.date.must_be_nil 'since this is set on insert'
-    obj.reload.date.must_be_instance_of Date
-  end
-
-  it 'allows datetime2 as timestamps' do
-    SSTestBooking.columns_hash['created_at'].sql_type.must_equal 'datetime2(7)'
-    SSTestBooking.columns_hash['updated_at'].sql_type.must_equal 'datetime2(7)'
-    obj1 = SSTestBooking.new name: 'test1'
-    obj1.save!
-    obj1.created_at.must_be_instance_of Time
-    obj1.updated_at.must_be_instance_of Time
-  end
-
-  # Natural primary keys.
-
-  it 'work with identity inserts' do
-    record = SSTestNaturalPkData.new name: 'Test', description: 'Natural identity inserts.'
-    record.id = '12345ABCDE'
-    assert record.save
-    assert_equal '12345ABCDE', record.reload.id
-  end
-
-  it 'work with identity inserts when the key is an int' do
-    record = SSTestNaturalPkIntData.new name: 'Test', description: 'Natural identity inserts.'
-    record.id = 12
-    assert record.save
-    assert_equal 12, record.reload.id
-  end
-
-  it 'use primary key for row table order in pagination sql' do
-    sql = /ORDER BY \[sst_natural_pk_data\]\.\[legacy_id\] ASC OFFSET 5 ROWS FETCH NEXT 5 ROWS ONLY/
-    assert_sql(sql) { SSTestNaturalPkData.limit(5).offset(5).load }
-  end
-
-  # Special quoted column
-
-  it 'work as normal' do
-    SSTestEdgeSchema.delete_all
-    r = SSTestEdgeSchema.create! 'crazy]]quote' => 'crazyqoute'
-    assert SSTestEdgeSchema.columns_hash['crazy]]quote']
-    assert_equal r, SSTestEdgeSchema.where('crazy]]quote' => 'crazyqoute').first
-  end
-
-  it 'various methods to bypass national quoted columns for any column, but primarily useful for char/varchar' do
-    value = Class.new do
-      def quoted_id
-        "'T'"
-      end
+  
+  context 'Testing edge case schemas' do
+    
+    setup do
+      @edge_class = SqlServerEdgeSchema
     end
-    # Using ActiveRecord's quoted_id feature for objects.
-    assert_sql(/@0 = 'T'/) { SSTestDatatypeMigration.where(char_col: value.new).first }
-    assert_sql(/@0 = 'T'/) { SSTestDatatypeMigration.where(varchar_col: value.new).first }
-    # Using our custom char type data.
-    data = ActiveRecord::Type::SQLServer::Char::Data
-    assert_sql(/@0 = 'T'/) { SSTestDatatypeMigration.where(char_col: data.new('T')).first }
-    assert_sql(/@0 = 'T'/) { SSTestDatatypeMigration.where(varchar_col: data.new('T')).first }
-    # Taking care of everything.
-    assert_sql(/@0 = 'T'/) { SSTestDatatypeMigration.where(char_col: 'T').first }
-    assert_sql(/@0 = 'T'/) { SSTestDatatypeMigration.where(varchar_col: 'T').first }
+    
+    context 'with description column' do
+
+      setup do
+        @da = @edge_class.create! :description => 'A'
+        @db = @edge_class.create! :description => 'B'
+        @dc = @edge_class.create! :description => 'C'
+      end
+      
+      teardown { @edge_class.delete_all }
+
+      should 'allow all sorts of ordering without adapter munging it up' do
+        assert_equal ['A','B','C'], @edge_class.all(:order => 'description').map(&:description)
+        assert_equal ['A','B','C'], @edge_class.all(:order => 'description asc').map(&:description)
+        assert_equal ['A','B','C'], @edge_class.all(:order => 'description ASC').map(&:description)
+        assert_equal ['C','B','A'], @edge_class.all(:order => 'description desc').map(&:description)
+        assert_equal ['C','B','A'], @edge_class.all(:order => 'description DESC').map(&:description)
+      end
+
+    end
+    
+    context 'with bigint column' do
+
+      setup do
+        @b5k   = 5000
+        @bi5k  = @edge_class.create! :bigint => @b5k, :description => 'Five Thousand'
+        @bnum  = 9_000_000_000_000_000_000
+        @bimjr = @edge_class.create! :bigint => @bnum, :description => 'Close to max bignum'
+      end
+
+      should 'can find by biginit' do
+        assert_equal @bi5k,  @edge_class.find_by_bigint(@b5k)
+        assert_equal @b5k,   @edge_class.find(:first, :select => 'bigint', :conditions => {:bigint => @b5k}).bigint
+        assert_equal @bimjr, @edge_class.find_by_bigint(@bnum)
+        assert_equal @bnum,  @edge_class.find(:first, :select => 'bigint', :conditions => {:bigint => @bnum}).bigint
+      end
+
+    end
+    
+    context 'with tinyint column' do
+
+      setup do
+        @tiny1 = @edge_class.create! :tinyint => 1
+        @tiny255 = @edge_class.create! :tinyint => 255
+      end
+
+      should 'not treat tinyint like boolean as mysql does' do
+        assert_equal 1, @edge_class.find_by_tinyint(1).tinyint
+        assert_equal 255, @edge_class.find_by_tinyint(255).tinyint
+      end
+      
+      should 'throw an error when going out of our tiny int bounds' do
+        assert_raise(ActiveRecord::StatementInvalid) { @edge_class.create! :tinyint => 256 }
+      end
+      
+    end
+    
+    context 'with uniqueidentifier column' do
+
+      setup do
+        @newid = ActiveRecord::Base.connection.newid_function
+        assert_guid @newid
+      end
+
+      should 'allow a simple insert and read of a column without a default function' do
+        obj = @edge_class.create! :guid => @newid
+        assert_equal @newid, @edge_class.find(obj.id).guid
+      end
+      
+      should 'record the default function name in the column definition but still show a nil real default, will use one day for insert/update' do
+        newid_column = @edge_class.columns_hash['guid_newid']
+        assert newid_column.default_function.present?
+        assert_nil newid_column.default
+        assert_equal 'newid()', newid_column.default_function
+        unless ActiveRecord::Base.connection.sqlserver_2000?
+          newseqid_column = @edge_class.columns_hash['guid_newseqid']
+          assert newseqid_column.default_function.present?
+          assert_nil newseqid_column.default
+          assert_equal 'newsequentialid()', newseqid_column.default_function
+        end
+      end
+      
+      should 'use model callback to set get a new guid' do
+        obj = @edge_class.new
+        obj.new_id_setting = true
+        obj.save!
+        assert_guid obj.guid_newid
+      end
+
+    end
+    
   end
-
-  # With column names that have spaces
-
-  it 'create record using a custom attribute reader and be able to load it back in' do
-    value = 'Saved value into a column that has a space in the name.'
-    record = SSTestEdgeSchema.create! with_spaces: value
-    assert_equal value, SSTestEdgeSchema.find(record.id).with_spaces
+  
+  
+  protected
+  
+  def assert_guid(guid)
+    assert_match %r|\w{8}-\w{4}-\w{4}-\w{4}-\w{12}|, guid
   end
-
-  # With description column
-
-  it 'allow all sorts of ordering without adapter munging it up with special description column' do
-    SSTestEdgeSchema.create! description: 'A'
-    SSTestEdgeSchema.create! description: 'B'
-    SSTestEdgeSchema.create! description: 'C'
-    assert_equal ['A','B','C'], SSTestEdgeSchema.order('description').map(&:description)
-    assert_equal ['A','B','C'], SSTestEdgeSchema.order('description asc').map(&:description)
-    assert_equal ['A','B','C'], SSTestEdgeSchema.order('description ASC').map(&:description)
-    assert_equal ['C','B','A'], SSTestEdgeSchema.order('description desc').map(&:description)
-    assert_equal ['C','B','A'], SSTestEdgeSchema.order('description DESC').map(&:description)
-  end
-
-  # For uniqueidentifier model helpers
-
-  it 'returns a new id via connection newid_function' do
-    acceptable_uuid = ActiveRecord::ConnectionAdapters::SQLServer::Type::Uuid::ACCEPTABLE_UUID
-    db_uuid = ActiveRecord::Base.connection.newid_function
-    db_uuid.must_match(acceptable_uuid)
-  end
-
+  
 end
