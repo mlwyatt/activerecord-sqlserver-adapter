@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-require "bundler/gem_tasks"
-
-=======
 require 'bundler/gem_tasks'
 require 'rake/testtask'
 require_relative 'test/support/paths_sqlserver'
@@ -50,4 +46,3 @@ namespace :profile do
     end
   end
 end
->>>>>>> 39c26d444de3cb7923c36674683f086480c11ec0

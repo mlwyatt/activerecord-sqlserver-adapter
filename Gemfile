@@ -1,9 +1,4 @@
 source 'https://rubygems.org'
-<<<<<<< HEAD
-
-# Specify your gem's dependencies in activerecord-sqlserver-adapter.gemspec
-gemspec
-=======
 gemspec
 
 gem 'bcrypt'
@@ -64,4 +59,3 @@ group :guard do
   gem 'guard'
   gem 'guard-minitest'
 end
->>>>>>> 39c26d444de3cb7923c36674683f086480c11ec0
