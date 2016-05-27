@@ -24,11 +24,11 @@ require 'active_record/connection_adapters/sqlserver/table_definition'
 require 'active_record/connection_adapters/sqlserver/core_ext/explain'
 # require 'active_record/connection_adapters/sqlserver/core_ext/relation'
 require 'active_record/connection_adapters/sqlserver/schema_statements'
-# require 'active_record/connection_adapters/sqlserver/database_statements'
+require 'active_record/connection_adapters/sqlserver/database_statements'
 require 'active_record/connection_adapters/sqlserver/core_ext/active_record'
 require 'active_record/connection_adapters/sqlserver/core_ext/attribute_methods'
 require 'active_record/connection_adapters/sqlserver/core_ext/explain_subscriber'
-require 'active_record/connection_adapters/sqlserver/core_ext/database_statements'
+# require 'active_record/connection_adapters/sqlserver/core_ext/database_statements'
 
 module ActiveRecord
 
