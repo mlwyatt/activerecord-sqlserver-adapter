@@ -195,11 +195,6 @@ module ActiveRecord
       include SQLServer::SchemaStatements
       include SQLServer::DatabaseLimits
       include SQLServer::DatabaseTasks
-      include Sqlserver::Quoting
-      include Sqlserver::DatabaseStatements
-      include Sqlserver::Showplan
-      include Sqlserver::SchemaStatements
-      include Sqlserver::DatabaseLimits
       include Sqlserver::Errors
 
       VERSION                     = File.read(File.expand_path("../../../../VERSION",__FILE__)).strip
