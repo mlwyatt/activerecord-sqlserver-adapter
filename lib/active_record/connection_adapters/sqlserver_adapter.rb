@@ -602,6 +602,7 @@ module ActiveRecord
                             end
                           end
                       end
+        puts @connection
         @spid = _raw_select('SELECT @@SPID', fetch: :rows).first.first
         configure_connection
       rescue
