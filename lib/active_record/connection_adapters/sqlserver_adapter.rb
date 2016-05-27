@@ -422,8 +422,6 @@ module ActiveRecord
             DeadlockVictim.new(message, e)
           when /database .* does not exist/i
             NoDatabaseError.new(message, e)
-          when *lost_connection_messages
-            LostConnection.new(message,e)
           else
             super
         end
