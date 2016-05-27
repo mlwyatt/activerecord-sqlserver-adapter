@@ -86,7 +86,6 @@ module ActiveRecord
       ADAPTER_NAME                = 'SQLServer'.freeze
       DATABASE_VERSION_REGEXP     = /Microsoft SQL Server\s+"?(\d{4}|\w+)"?/
       SUPPORTED_VERSIONS          = [2000]
-      ADAPTER_NAME = 'SQLServer'.freeze
 
       attr_reader :database_version, :database_year, :spid, :product_level, :product_version, :edition
 
