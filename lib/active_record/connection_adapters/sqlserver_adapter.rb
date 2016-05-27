@@ -285,6 +285,10 @@ module ActiveRecord
         @database_year == 2000
       end
 
+      def sqlserver_azure?
+        @sqlserver_azure
+      end
+
       def database_prefix_remote_server?
         return false if database_prefix.blank?
         name = SQLServer::Utils.extract_identifiers(database_prefix)
