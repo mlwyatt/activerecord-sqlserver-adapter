@@ -80,7 +80,7 @@ module ActiveRecord
       include SQLServer::SchemaStatements
       include SQLServer::DatabaseLimits
       include SQLServer::DatabaseTasks
-      include Sqlserver::Errors
+      include SQLServer::Errors
 
       VERSION                     = File.read(File.expand_path("../../../../VERSION",__FILE__)).strip
       ADAPTER_NAME                = 'SQLServer'.freeze
